@@ -10,7 +10,7 @@
             </ul>
               <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a href="/" @click="handleClick" class="nav-link" >Log out</a>
+                <a href="/" @click="handleClick" class="nav-link">Log out</a>
               </li>
             </ul>
         </div>
@@ -18,16 +18,14 @@
     </nav>
 </template>
 <script>
-// import {mapGetters} from 'vuex'
 export default {
-   name:'Nav',
-
-   methods:{
+  name:'Nav',
+  props:['logOut'],
+  methods:{
      handleClick(){
         localStorage.removeItem('state')
         this.$router.push('/login');
-        console.log(this.$store.state)
-      
+        console.log(this.$store.state.logOut)
      }
    },
    computed:{

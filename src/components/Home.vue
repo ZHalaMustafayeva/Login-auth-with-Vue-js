@@ -7,7 +7,7 @@
 </template>
 
 <script>
-// import {mapGetters} from 'vuex'
+// import store from 'vuex'
 export default {
   name:'Home',
   computed:{

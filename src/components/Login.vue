@@ -1,6 +1,6 @@
 <template>
-    <form @submit.prevent = "submitForm">
-        <!-- <div v-if="error" class="alert alert-danger" role="alert">{{error}}</div> -->
+   <div>
+        <form @submit.prevent = "submitForm">
         <h3>Login</h3>
         <div class="form-group">
             <label> Email</label>
@@ -13,7 +13,6 @@
             >
             <div v-if="!$v.email2.required" >email daxil edin</div>
             <span v-if="!$v.email2.email" color="#daa520">Sehv email</span>
-
         </div>
         <div class="form-group">
             <label> Password</label>
@@ -43,6 +42,13 @@
       
         <button class="btn btn-primary btn-block">Login</button>
     </form>
+    <div v-if="checkData" class="checkData mt-4">
+        <button type="button"  class="btn btn-warning ">
+        Yanlis istifadeci melumatlari daxil etdiniz
+        </button>
+    </div>
+    
+   </div>
 </template>
 
 <script>
@@ -53,37 +59,42 @@ import {
   minLength,
   maxLength,
 } from "vuelidate/lib/validators";
-
+import store from '../vuex'
 export default {
     name:'Login',
     data(){
         return{
             email2:'',
-            pass2:''
+            pass2:'',
+            checkData:false
         }
     },
     computed:{
+        
         email(){
-            return this.$store.state.email;
+            return store.state.email;
         },
         pass(){
-            return this.$store.state.pass;
+            return store.state.pass;
         }
     },
     methods:{
-        validationStatus(validation){
-            return typeof validation != 'undefined' ? validation.$error : false;
-        },
         updateUser(e){
-            this.$store.commit("updateUser", e.target.value)
+            store.commit("updateUser", e.target.value)
         },
-    
         submitForm() {
+            if(this.$route.path=="/login"){
+                store.state.logOut = false
+            }
+            console.log(store.state.logOut)
+            if(this.email !== this.email2 || this.pass !== this.pass2 ){
+                this.checkData = true  
+            }
             this.$v.$touch();
             if(this.$v.$pendding || this.$v.$error){
                 return;
             }
-            this.$store.dispatch("updateUser", {
+            store.dispatch("updateUser", {
                 email2: this.email2,
                 pass2: this.pass2
             });

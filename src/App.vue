@@ -23,11 +23,7 @@ export default {
     return{
       user:null 
     }
-  },
-  // async created(){
-  //   const response = await axios.get('user');
-  //   this.$store.dispatch('user', response.data)
-  // }
+  }
 }
 </script>
 

@@ -9,7 +9,8 @@ const store = new Vuex.Store({
     state:{
         arr:[],
         email:"a@gmail.com",
-        pass:"123456"
+        pass:"123456",
+        logOut:true
     },
     getters:{
         getEmail(state){
