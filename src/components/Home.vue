@@ -7,7 +7,6 @@
 </template>
 
 <script>
-// import store from 'vuex'
 export default {
   name:'Home',
   computed:{

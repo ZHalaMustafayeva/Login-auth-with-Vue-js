@@ -1,6 +1,6 @@
 <template>
    <div>
-        <form @submit.prevent = "submitForm">
+        <form @submit = "submitForm">
         <h3>Login</h3>
         <div class="form-group">
             <label> Email</label>
@@ -76,6 +76,9 @@ export default {
         },
         pass(){
             return store.state.pass;
+        },
+        logOut(){
+            return store.state.logOut
         }
     },
     methods:{
@@ -83,13 +86,10 @@ export default {
             store.commit("updateUser", e.target.value)
         },
         submitForm() {
-            if(this.$route.path=="/login"){
-                store.state.logOut = false
-            }
-            console.log(store.state.logOut)
             if(this.email !== this.email2 || this.pass !== this.pass2 ){
                 this.checkData = true  
             }
+            
             this.$v.$touch();
             if(this.$v.$pendding || this.$v.$error){
                 return;

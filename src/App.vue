@@ -1,9 +1,12 @@
 <template>
   <div id="app">
+  <div v-if="!appData">
     <Nav/>
-  
-   
-    <div class="auth-wrapper">
+  </div>
+  <div v-else>
+    <Nav2/>
+  </div>
+    <div class="auth-wrapper" >
       <div class="auth-inner">
         <router-view></router-view>
       </div>
@@ -13,15 +16,18 @@
 
 <script>
 import Nav from './components/Nav.vue';
+import Nav2 from './components/Nav2.vue'
 
 export default {
   name: 'App',
   components: {
-    Nav
+    Nav,
+    Nav2
   },
   data(){
     return{
-      user:null 
+      user:null,
+      appData: localStorage.getItem('state')
     }
   }
 }

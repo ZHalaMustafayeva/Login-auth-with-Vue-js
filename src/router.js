@@ -19,7 +19,6 @@ const router = new Router({
             name:"login",
             component:() => import("./components/Login.vue")
         }
-        
     ]
 })
 
