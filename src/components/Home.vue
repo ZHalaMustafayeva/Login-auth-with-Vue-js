@@ -1,13 +1,37 @@
 <template>
   <div>
-    <h3 v-if="this.$store.state.email">E-mail: {{ this.$store.state.email }}</h3>
-    <h3>Password: {{ this.$store.state.pass }}</h3>
-    <h3 v-if="!this.$store.state.email">you are not logged in</h3>
+    <v-data-table
+      :headers="headers"
+      :items="allPost"
+      :items-per-page="5"
+      class="elevation-1"
+    >
+
+    </v-data-table>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-  name: "Home"
+  data() {
+    return {
+      headers: [
+      
+        { text: "User Id", value:"userId", sortable: false,  },
+        { text: "Title",value:"title", sortable: false,  },
+        { text: "Body",value:"body",  sortable: false, },
+        
+      
+      ],
+    };
+  },
+  computed: {
+    ...mapGetters(["allPost"]),
+  },
+  mounted() {
+    this.$store.dispatch("getPost");
+    console.log(this.allPost);
+  },
 };
 </script>

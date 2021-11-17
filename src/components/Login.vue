@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <form @submit.prevent="submitForm">
+  <div class="biglogin">
+    <form class="login" @submit.prevent="submitForm">
       <h3>Login</h3>
       <div class="form-group">
         <label> Email</label>
@@ -98,3 +98,27 @@ export default {
   },
 };
 </script>
+ <style scoped>
+.biglogin {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  background-color: orange;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary{
+  width: 208px !important;
+  /* height: 50px; */
+  padding: 6px;
+}
+</style>

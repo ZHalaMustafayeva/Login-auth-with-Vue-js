@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand navbar-light fixed-top">
+  <nav class="navbar navbar-expand navbar-light primary fixed-top">
     <div class="container">
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
